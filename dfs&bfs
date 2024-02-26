@@ -1,0 +1,46 @@
+def dfs(graph,start,goal):
+    explored=[]
+    frontier=[]
+    explored.append(start)
+    frontier.append(start)
+    
+    while frontier:
+        node=frontier.pop()
+        print(node, end=" ")
+        if node==goal:
+                print("Goal node found \n")
+                break
+        for neighbor in graph[node]:
+            if neighbor not in explored:
+                explored.append(neighbor)
+                frontier.append(neighbor)
+                
+                
+if __name__ =='__main__':
+    
+    graph={0:[1,2],1:[3],2:[3,4],3:[4],4:[0]}
+    dfs(graph,0,3)
+
+
+
+def bfs(graph,start):
+        explored=[]
+        frontier=[]
+        explored.append(start)
+        frontier.append(start)
+
+        while frontier:
+            
+            node=frontier.pop(0)
+            print(node, end=" ")
+
+            for neighbor in graph[node]:
+                if neighbor not in explored:
+                    explored.append(neighbor)
+                    frontier.append(neighbor)
+                    
+if __name__ =='__main__':
+    #graph={ 0:[1,2], 1:[2], 2:[0,3],3:[3]}
+    #dfs(graph,'A')
+    graph={0:[1,2],1:[3],2:[3,4],3:[4],4:[0]}
+    bfs(graph,0)
