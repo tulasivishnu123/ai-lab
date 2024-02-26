@@ -1,0 +1,42 @@
+def dls(graph, start, goal, depth):
+    explored = []
+    frontier = []
+    explored.append(start)
+    frontier.append([start, 0])
+
+    while frontier:
+        node, node_depth = frontier.pop()
+        print(node, end=" ")
+        if node == goal:
+            print("Goal node found \n")
+            break
+        if node_depth < depth:
+            for neighbor in graph[node]:
+                if neighbor not in explored:
+                    explored.append(neighbor)
+                    frontier.append([neighbor, node_depth + 1])
+
+
+if __name__ == '__main__':
+    graph={
+    'A':['B','C'],
+    'B':['D','E'],
+    'C':['F','G'],
+    'D':['H','I'],
+    'E':['J','K'],
+    'F':['L','M'],
+    'G':['N','O'],
+    'H':[],
+    'I':[],
+    'J':[],
+    'K':[],
+    'L':[],
+    'M':[],
+    'N':[],
+    'O':[]
+}
+    goal=input('enter the goal node')
+    depth=int(input('enter the limit in the depth'))
+    print()
+    start='A'
+    dls(graph, start, goal, depth)
